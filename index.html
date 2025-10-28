@@ -1,86 +1,218 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>코스피 강세 — 투자자를 위한 미니멀 뉴스</title>
-  <meta name="description" content="주식 투자자를 위한 코스피 강세 분석 페이지. 실제 최신 뉴스 기사와 차트 이미지 포함.">
-  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>사이즈: 스트리밍 음악 서비스 — 전 연령대 대상</title>
+  <meta name="description" content="전 연령대 대상, 미니멀 & 심플. 실제 뉴스 기사 링크와 각 서비스 대표 로고 포함." />
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --bg: #fafafb;
-      --card: #ffffff;
-      --ink: #121212;
-      --muted: #555;
-      --line: #e1e3e6;
-      --accent: #1e88e5;
+    :root{
+      --bg:#0b0c0f; --card:#121418; --ink:#e7e9ee; --muted:#aeb4c2;
+      --line:#1b1f27; --accent:#6ae3ff;
     }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); font-family: "Pretendard", system-ui, -apple-system; }
-    a { color: var(--accent); text-decoration: none; }
-    .wrap { max-width: 900px; margin: 0 auto; padding: 30px 20px; }
-    .header { text-align: center; margin-bottom: 40px; }
-    .header h1 { font-size: 32px; margin: 0; }
-    .header p { font-size: 16px; color: var(--muted); }
-    .card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 30px; }
-    .card .thumb img { width:100%; height:auto; display:block; }
-    .card .content { padding: 20px; }
-    .card .content .meta { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
-    .card .content .title { font-size: 20px; margin: 0 0 10px; }
-    .card .content .desc { font-size: 14px; color: #333; margin-bottom: 15px; }
-    .card .content .link { font-size: 14px; font-weight: 600; }
-    .footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 50px; }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:"Pretendard",system-ui}
+    a{color:var(--accent);text-decoration:none}
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px}
+    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+    header h1{font-size:26px;margin:0}
+    header p{margin:0;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin-top:18px}
+    .col-6{grid-column:span 12}
+    @media(min-width:960px){.col-6{grid-column:span 6}}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+    .head{display:flex;gap:14px;align-items:center;padding:14px;border-bottom:1px solid var(--line)}
+    .logo{width:56px;height:56px;background:#0f1216;border-radius:12px;display:flex;align-items:center;justify-content:center;padding:8px;position:relative;overflow:hidden}
+    .logo img{max-width:100%;max-height:100%;display:block}
+    .logo .fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;color:#cbd1de;font-size:11px;border:1px dashed #2a3140}
+    .title{font-size:18px;margin:0}
+    .muted{color:var(--muted);font-size:12px}
+    .body{padding:14px}
+    .body ul{margin:8px 0 0 18px}
+    .body li{margin:6px 0;color:#cfd4e2}
+    .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .pill{font-size:12px;padding:6px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+    footer{margin-top:36px;color:var(--muted);font-size:12px;text-align:center}
   </style>
+  <script>
+    // Image fallback handler: try Clearbit -> Wikimedia -> text badge
+    function imgFallback(img, altUrl, labelElId){
+      if(img.dataset.tried === "wikimedia"){ // already tried both
+        const badge = document.getElementById(labelElId);
+        if(badge){ badge.style.display = "flex"; }
+        return;
+      }
+      if(!img.dataset.tried){ // first failure -> try wikimedia
+        img.dataset.tried = "wikimedia";
+        img.src = altUrl;
+      } else { // second failure -> show text badge
+        const badge = document.getElementById(labelElId);
+        if(badge){ badge.style.display = "flex"; }
+        img.style.display = "none";
+      }
+    }
+  </script>
 </head>
 <body>
   <div class="wrap">
-    <div class="header">
-      <h1>코스피 강세 리포트</h1>
-      <p>주식 투자자를 위한 최신 뉴스 & 차트 분석</p>
-    </div>
+    <header>
+      <div>
+        <h1>사이즈: 스트리밍 음악 서비스</h1>
+        <p>전 연령대 · 미니멀 & 심플 · 전문성 & 신뢰성</p>
+      </div>
+      <div class="pill">실제 뉴스 기사 링크 포함</div>
+    </header>
 
-    <!-- 카드 1: 코스피 차트 -->
-    <div class="card">
-      <div class="thumb">
-        <img src="https://images.unsplash.com/photo-1569025690938-a00729c9e1fe?auto=format&fit=crop&w=1200&q=85" alt="코스피 차트 이미지">
-      </div>
-      <div class="content">
-        <div class="meta">2025-10-27 · ZDNet Korea</div>
-        <div class="title">코스피 사상 첫 4000선 돌파…美 물가 둔화·금리 인하 기대</div>
-        <div class="desc">코스피가 장중 4020선을 넘으며 사상 최고치를 기록했습니다. 미국의 물가 상승세 둔화와 금리 인하 기대감이 맞물려 투자심리가 개선된 영향으로 풀이됩니다.</div>
-        <a class="link" href="https://zdnet.co.kr/view/?no=20251027105451" target="_blank">기사 보기 ></a>
-      </div>
-    </div>
+    <section class="grid">
+      <!-- Spotify -->
+      <article class="card col-6">
+        <div class="head">
+          <div class="logo">
+            <img src="https://logo.clearbit.com/spotify.com"
+                 alt="Spotify 로고"
+                 onerror="imgFallback(this,'https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg','badge_spotify')">
+            <div id="badge_spotify" class="fallback">Spotify</div>
+          </div>
+          <div>
+            <h3 class="title">Spotify</h3>
+            <div class="muted">프리미엄 구독 · 개인화 추천 · 팟캐스트</div>
+          </div>
+        </div>
+        <div class="body">
+          <ul>
+            <li>영국/스위스에서 프리미엄 가격 인상 발표 (2025‑10‑27)</li>
+          </ul>
+          <div class="links">
+            <a class="pill" href="https://www.musicbusinessworldwide.com/spotify-raises-uk-and-switzerland-premium-prices-again-as-analysts-see-us-hike-by-early-2026/" target="_blank" rel="noopener">MBW 기사</a>
+          </div>
+        </div>
+      </article>
 
-    <!-- 카드 2: 시장 이미지 -->
-    <div class="card">
-      <div class="thumb">
-        <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=85" alt="주식 시장 이미지">
-      </div>
-      <div class="content">
-        <div class="meta">2025-10-28 · 한국경제 / 연합뉴스TV</div>
-        <div class="title">“코스피 아직도 싸다”…기재부 이례적 발표에 시장 술렁</div>
-        <div class="desc">기획재정부는 코스피가 4000선을 돌파했음에도 여전히 저평가돼 있다고 판단하며 ‘바이 더 딥(buy the dip)’ 전략을 언급했습니다.</div>
-        <a class="link" href="https://www.hankyung.com/article/202510286704i" target="_blank">기사 보기 ></a>
-      </div>
-    </div>
+      <!-- Apple Music -->
+      <article class="card col-6">
+        <div class="head">
+          <div class="logo">
+            <img src="https://logo.clearbit.com/apple.com"
+                 alt="Apple Music 로고"
+                 onerror="imgFallback(this,'https://upload.wikimedia.org/wikipedia/commons/d/d9/Apple_Music_logo.svg','badge_apple')">
+            <div id="badge_apple" class="fallback">Apple Music</div>
+          </div>
+          <div>
+            <h3 class="title">Apple Music</h3>
+            <div class="muted">Spatial Audio · Dolby Atmos · 무손실</div>
+          </div>
+        </div>
+        <div class="body">
+          <ul>
+            <li>스페이셜 오디오/돌비 애트모스로 K‑POP 등 3D 사운드 제공</li>
+          </ul>
+          <div class="links">
+            <a class="pill" href="https://www.apple.com/apple-music/" target="_blank" rel="noopener">공식 페이지</a>
+          </div>
+        </div>
+      </article>
 
-    <!-- 카드 3: 투자자 이미지 -->
-    <div class="card">
-      <div class="thumb">
-        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=85" alt="투자자 이미지">
-      </div>
-      <div class="content">
-        <div class="meta">2025-10-28 · 노컷뉴스</div>
-        <div class="title">코스피 상승률 글로벌 1위…‘5000피’ 향해 파죽지세</div>
-        <div class="desc">코스피는 27일 하루에만 2.57% 급등하며 4042.83에 마감, 연초 대비 상승률이 압도적이며 글로벌 주요 지수를 앞섰습니다.</div>
-        <a class="link" href="https://www.nocutnews.co.kr/news/6419228" target="_blank">기사 보기 ></a>
-      </div>
-    </div>
+      <!-- YouTube Music -->
+      <article class="card col-6">
+        <div class="head">
+          <div class="logo">
+            <img src="https://logo.clearbit.com/youtube.com"
+                 alt="YouTube Music 로고"
+                 onerror="imgFallback(this,'https://upload.wikimedia.org/wikipedia/commons/8/8f/YouTube_Music_2020.svg','badge_ytm')">
+            <div id="badge_ytm" class="fallback">YouTube Music</div>
+          </div>
+          <div>
+            <h3 class="title">YouTube Music</h3>
+            <div class="muted">뮤직비디오 연동 · 커뮤니티 기능</div>
+          </div>
+        </div>
+        <div class="body">
+          <ul>
+            <li>출시 10주년, ‘Taste Match’ 공유 플레이리스트 도입 (2025‑08)</li>
+          </ul>
+          <div class="links">
+            <a class="pill" href="https://www.theverge.com/news/763611/youtube-music-taste-match-10-anniversary" target="_blank" rel="noopener">The Verge</a>
+          </div>
+        </div>
+      </article>
 
-    <div class="footer">
-      © 2025 코스피 강세 리포트 — 실제 기사 링크 포함 · 이미지 출처: Unsplash (finance / chart / market)
-    </div>
+      <!-- Melon -->
+      <article class="card col-6">
+        <div class="head">
+          <div class="logo">
+            <img src="https://logo.clearbit.com/melon.com"
+                 alt="Melon 로고"
+                 onerror="imgFallback(this,'https://upload.wikimedia.org/wikipedia/commons/8/8e/Melon_logo.svg','badge_melon')">
+            <div id="badge_melon" class="fallback">Melon</div>
+          </div>
+          <div>
+            <h3 class="title">Melon</h3>
+            <div class="muted">국내 최대급 카탈로그 · 차트</div>
+          </div>
+        </div>
+        <div class="body">
+          <ul>
+            <li>국내 시장 점유율 경쟁 심화: 글로벌 플랫폼 약진 보도 (2025‑05)</li>
+          </ul>
+          <div class="links">
+            <a class="pill" href="https://www.chosun.com/economy/tech_it/2025/05/13/4FLHWZCLGBEI7ESZYGP6HEUF5I/" target="_blank" rel="noopener">조선일보 보도</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Genie Music -->
+      <article class="card col-6">
+        <div class="head">
+          <div class="logo">
+            <img src="https://logo.clearbit.com/genie.co.kr"
+                 alt="Genie Music 로고"
+                 onerror="imgFallback(this,'https://upload.wikimedia.org/wikipedia/commons/3/3d/Genie_Music_logo.svg','badge_genie')">
+            <div id="badge_genie" class="fallback">Genie</div>
+          </div>
+          <div>
+            <h3 class="title">Genie Music</h3>
+            <div class="muted">통신사 연계 · 고음질 스트리밍</div>
+          </div>
+        </div>
+        <div class="body">
+          <ul>
+            <li>국내 음원 생태계 이슈 속 서비스 안정화·큐레이션 강화</li>
+          </ul>
+          <div class="links">
+            <a class="pill" href="https://www.genie.co.kr/" target="_blank" rel="noopener">공식 사이트</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Bugs -->
+      <article class="card col-6">
+        <div class="head">
+          <div class="logo">
+            <img src="https://logo.clearbit.com/bugs.co.kr"
+                 alt="Bugs 로고"
+                 onerror="imgFallback(this,'https://upload.wikimedia.org/wikipedia/commons/1/15/Bugs_Logo.svg','badge_bugs')">
+            <div id="badge_bugs" class="fallback">Bugs</div>
+          </div>
+          <div>
+            <h3 class="title">Bugs</h3>
+            <div class="muted">Hi‑Fi 컬렉션 · 장르 발굴</div>
+          </div>
+        </div>
+        <div class="body">
+          <ul>
+            <li>국내 인디/장르 특화 큐레이션 지속 강화</li>
+          </ul>
+          <div class="links">
+            <a class="pill" href="https://music.bugs.co.kr/" target="_blank" rel="noopener">공식 사이트</a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <footer>
+      © 2025 사이즈: 스트리밍 음악 서비스 — 실제 뉴스 링크 포함 · 로고: Clearbit(기본) / Wikimedia(대체) 사용
+    </footer>
   </div>
 </body>
 </html>
