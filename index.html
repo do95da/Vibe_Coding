@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>코스피 강세 — 투자자를 위한 미니멀 뉴스</title>
+  <meta name="description" content="주식 투자자를 위한 코스피 강세 분석 페이지. 실제 최신 뉴스 기사와 차트 이미지 포함.">
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafafb;
+      --card: #ffffff;
+      --ink: #121212;
+      --muted: #555;
+      --line: #e1e3e6;
+      --accent: #1e88e5;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); font-family: "Pretendard", system-ui, -apple-system; }
+    a { color: var(--accent); text-decoration: none; }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 30px 20px; }
+    .header { text-align: center; margin-bottom: 40px; }
+    .header h1 { font-size: 32px; margin: 0; }
+    .header p { font-size: 16px; color: var(--muted); }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 30px; }
+    .card .thumb img { width:100%; height:auto; display:block; }
+    .card .content { padding: 20px; }
+    .card .content .meta { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+    .card .content .title { font-size: 20px; margin: 0 0 10px; }
+    .card .content .desc { font-size: 14px; color: #333; margin-bottom: 15px; }
+    .card .content .link { font-size: 14px; font-weight: 600; }
+    .footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 50px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <h1>코스피 강세 리포트</h1>
+      <p>주식 투자자를 위한 최신 뉴스 & 차트 분석</p>
+    </div>
+
+    <!-- 카드 1: 코스피 차트 -->
+    <div class="card">
+      <div class="thumb">
+        <img src="https://images.unsplash.com/photo-1569025690938-a00729c9e1fe?auto=format&fit=crop&w=1200&q=85" alt="코스피 차트 이미지">
+      </div>
+      <div class="content">
+        <div class="meta">2025-10-27 · ZDNet Korea</div>
+        <div class="title">코스피 사상 첫 4000선 돌파…美 물가 둔화·금리 인하 기대</div>
+        <div class="desc">코스피가 장중 4020선을 넘으며 사상 최고치를 기록했습니다. 미국의 물가 상승세 둔화와 금리 인하 기대감이 맞물려 투자심리가 개선된 영향으로 풀이됩니다.</div>
+        <a class="link" href="https://zdnet.co.kr/view/?no=20251027105451" target="_blank">기사 보기 ></a>
+      </div>
+    </div>
+
+    <!-- 카드 2: 시장 이미지 -->
+    <div class="card">
+      <div class="thumb">
+        <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=85" alt="주식 시장 이미지">
+      </div>
+      <div class="content">
+        <div class="meta">2025-10-28 · 한국경제 / 연합뉴스TV</div>
+        <div class="title">“코스피 아직도 싸다”…기재부 이례적 발표에 시장 술렁</div>
+        <div class="desc">기획재정부는 코스피가 4000선을 돌파했음에도 여전히 저평가돼 있다고 판단하며 ‘바이 더 딥(buy the dip)’ 전략을 언급했습니다.</div>
+        <a class="link" href="https://www.hankyung.com/article/202510286704i" target="_blank">기사 보기 ></a>
+      </div>
+    </div>
+
+    <!-- 카드 3: 투자자 이미지 -->
+    <div class="card">
+      <div class="thumb">
+        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=85" alt="투자자 이미지">
+      </div>
+      <div class="content">
+        <div class="meta">2025-10-28 · 노컷뉴스</div>
+        <div class="title">코스피 상승률 글로벌 1위…‘5000피’ 향해 파죽지세</div>
+        <div class="desc">코스피는 27일 하루에만 2.57% 급등하며 4042.83에 마감, 연초 대비 상승률이 압도적이며 글로벌 주요 지수를 앞섰습니다.</div>
+        <a class="link" href="https://www.nocutnews.co.kr/news/6419228" target="_blank">기사 보기 ></a>
+      </div>
+    </div>
+
+    <div class="footer">
+      © 2025 코스피 강세 리포트 — 실제 기사 링크 포함 · 이미지 출처: Unsplash (finance / chart / market)
+    </div>
+  </div>
+</body>
+</html>
